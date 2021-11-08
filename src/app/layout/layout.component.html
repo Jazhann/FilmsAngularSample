@@ -1,1 +1,15 @@
-<p>layout works!</p>
+<app-header (menuToggle)="menuToggle()"></app-header>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="'/films'"> Peliculas </a>
+        <a mat-list-item [routerLink]="'/actors'"> Actores </a>
+        <a mat-list-item [routerLink]="'/studios'"> Estudios </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 94vh;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

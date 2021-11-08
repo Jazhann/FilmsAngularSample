@@ -1,0 +1,11 @@
+mat-toolbar {
+    position: sticky;
+    position: -webkit-sticky; 
+    top: 0; 
+    z-index: 1000; 
+    height: 6vh;
+
+    .spacer {
+        flex: 1 1 auto;
+    }
+}
