@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { LayoutService } from '@shared/services/layout.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,9 @@ export class HeaderComponent implements OnInit {
   @Output() menuToggle = new EventEmitter();
   title: string = '';
 
-  constructor() { }
+  constructor(
+    public layoutService: LayoutService
+  ) { }
 
   ngOnInit(): void {
   }

@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from '@shared/shared.module';
-import { StoreModule } from '@ngrx/store';
-
+import { FilmsModule } from '../features/films/films.module';
 
 
 @NgModule({
@@ -11,8 +9,7 @@ import { StoreModule } from '@ngrx/store';
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    SharedModule.forRoot(),
-    StoreModule.forRoot({}, {})
+    FilmsModule
   ]
 })
 export class CoreModule { }

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Globals } from './globals';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LayoutService } from './services/layout.service';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        Globals
+        Globals,
+        LayoutService
       ],
     };
   }
