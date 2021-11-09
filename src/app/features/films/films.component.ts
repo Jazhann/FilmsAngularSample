@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import { LayoutService } from '@shared/services/layout.service';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/app.reducer';
@@ -18,13 +19,14 @@ export class FilmsComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    private layoutService: LayoutService
+    private layoutService: LayoutService,
+    private translate: TranslateService
   ) { 
 
   }
 
   ngOnInit(): void {
-    this.layoutService.setTitle('Peliculas');
+    this.layoutService.setTitle(this.translate.instant('films.title'));
     this.store.dispatch(actions.fetchFilms());
   }
 
