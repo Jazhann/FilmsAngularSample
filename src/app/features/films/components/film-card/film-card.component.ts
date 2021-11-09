@@ -14,4 +14,7 @@ export class FilmCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getImage(image: string) {
+    return image != null ? image : './assets/images/imageNotFound.jpg'
+  }
 }

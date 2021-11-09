@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { Globals } from './globals';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { LayoutService } from './services/layout.service';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -24,13 +25,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     isolate: false,
     extend:true
     }),
-    FormsModule,
-    ReactiveFormsModule,
   ],
   exports: [
-    TranslateModule,
-    FormsModule,
-    ReactiveFormsModule,
+    TranslateModule
   ]
 })
 export class SharedModule {

@@ -9,18 +9,19 @@ import { MatCardModule } from '@angular/material/card';
 import { FilmsService } from './services/films.service';
 
 
+
 @NgModule({
   declarations: [
     FilmsComponent,
-    FilmCardComponent
+    FilmCardComponent,
   ],
   imports: [
     CommonModule,
     FilmsRoutingModule,
-    MatCardModule
+    MatCardModule,
   ],
   providers: [
-    FilmsService
+    FilmsService,
   ]
 })
 export class FilmsModule { }
