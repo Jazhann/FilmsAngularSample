@@ -5,15 +5,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LayoutService {
-  headerTitle = new BehaviorSubject<string>('');
+  headerTitle$ = new BehaviorSubject<string>('');
 
   constructor() { }
 
   setTitle(title: string) {
-    this.headerTitle.next(title);
+    this.headerTitle$.next(title);
   }
 
   getTitle(): Observable<string> {
-    return this.headerTitle.asObservable();
+    return this.headerTitle$.asObservable();
   }
 }

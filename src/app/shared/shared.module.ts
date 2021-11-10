@@ -7,6 +7,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LayoutService } from './services/layout.service';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SpinnerService } from './services/spinner.service';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -36,7 +37,8 @@ export class SharedModule {
       ngModule: SharedModule,
       providers: [
         Globals,
-        LayoutService
+        LayoutService,
+        SpinnerService
       ],
     };
   }

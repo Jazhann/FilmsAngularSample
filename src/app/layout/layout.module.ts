@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { HeaderComponent } from './components/header/header.component';
 import { LayoutComponent } from './layout.component';
@@ -23,11 +23,11 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [
     CommonModule,
     LayoutRoutingModule,
-    MatToolbarModule,
-    MatIconModule,
     MatButtonModule,
-    MatSidenavModule,
+    MatIconModule,
     MatListModule,
+    MatSidenavModule,
+    MatToolbarModule,
     TranslateModule.forChild()
   ],
 })

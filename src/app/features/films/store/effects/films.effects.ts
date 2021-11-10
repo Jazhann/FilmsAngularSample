@@ -6,6 +6,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { FilmsService } from '../../services/films.service';
 import * as actions from '../actions/films.actions';
+import { SpinnerService } from '@shared/services/spinner.service';
 
 
  
@@ -17,7 +18,10 @@ export class FilmsEffects {
       ofType(actions.fetchFilms),
       switchMap(() => this.filmsService.getFilms()
       .pipe(
-        map(films => actions.setFilms({films})),
+        map(films => {
+          this.spinnerService.hide();
+          return actions.setFilms({films}) 
+        }),
         catchError(() => EMPTY)
       ))
     ) 
@@ -25,7 +29,8 @@ export class FilmsEffects {
 
   constructor(
     private actions$: Actions,
-    private filmsService: FilmsService
+    private filmsService: FilmsService,
+    private spinnerService: SpinnerService
   ) {
     
   }

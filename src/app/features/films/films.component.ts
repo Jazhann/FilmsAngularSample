@@ -10,6 +10,7 @@ import { Constants } from '@shared/constants';
 import { AppState } from '@core/app.reducer';
 import { Film } from './models/film.model';
 import * as actions from './store/actions/films.actions';
+import { SpinnerService } from '@shared/services/spinner.service';
 
 @Component({
   selector: 'app-films',
@@ -22,6 +23,7 @@ export class FilmsComponent implements OnInit {
 
   constructor(
     private layoutService: LayoutService,
+    public spinnerService: SpinnerService,
     private store: Store<AppState>,
     private translate: TranslateService,
   ) { 
@@ -30,6 +32,7 @@ export class FilmsComponent implements OnInit {
 
   ngOnInit(): void {
     this.layoutService.setTitle(this.translate.instant(Constants.FILMS_TITLE));
+    this.spinnerService.show();
     this.store.dispatch(actions.fetchFilms());
   }
 

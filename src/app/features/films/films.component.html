@@ -1,4 +1,9 @@
 
-<div class="film-container">
+<div class="film-container" *ngIf="spinnerService.status() | async; else spinner">
     <app-film-card *ngFor="let film of films$ | async" [film]="film" class="film-container__card"></app-film-card>
 </div>
+<ng-template #spinner>
+    <div class="spinner-container">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    </div>
+</ng-template>
