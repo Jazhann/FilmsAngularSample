@@ -1,18 +1,17 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { LayoutService } from '@shared/services/layout.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   @Output() menuToggle = new EventEmitter();
-  title: string = '';
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor(
+    public layoutService: LayoutService
+  ) { }
 
   toggle () {
     this.menuToggle.emit();

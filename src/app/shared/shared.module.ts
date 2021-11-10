@@ -2,21 +2,32 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { Globals } from './globals';
-import { TranslateModule } from '@ngx-translate/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
+import { LayoutService } from './services/layout.service';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   imports: [
     CommonModule,
-    TranslateModule,
-    FormsModule,
-    ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+      provide: TranslateLoader,
+      useFactory: HttpLoaderFactory,
+      deps: [HttpClient]
+    },
+    isolate: false,
+    extend:true
+    }),
   ],
   exports: [
-    TranslateModule,
-    FormsModule,
-    ReactiveFormsModule,
+    TranslateModule
   ]
 })
 export class SharedModule {
@@ -24,7 +35,8 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        Globals
+        Globals,
+        LayoutService
       ],
     };
   }

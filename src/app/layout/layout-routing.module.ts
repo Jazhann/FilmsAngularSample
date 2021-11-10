@@ -4,7 +4,13 @@ import { LayoutComponent } from './layout.component';
 
 const routes: Routes = [
   {
-    path: '', component: LayoutComponent
+    path: '', component: LayoutComponent,
+    children: [
+      {
+        path: 'films',
+        loadChildren: () => import('../features/films/films.module').then(m => m.FilmsModule)
+      }
+    ]
   }
 ];
 

@@ -1,0 +1,26 @@
+.film-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 10vw;
+    @media screen and (max-width: 40em) {
+        margin: unset;
+    }
+
+    &__card {
+        flex: 1 0 500px;
+        max-width: calc(100% -  2vw);
+        box-sizing: border-box;
+        margin: 2vw 1vw;
+        @media screen and (min-width: 40em) {
+            max-width: calc(50% -  2vw);
+        }
+
+        @media screen and (min-width: 80em) {
+            max-width: calc(33% - 2vw);
+        }
+         
+        @media screen and (min-width: 100em) {
+            max-width: calc(25% - 2vw);
+        }
+    }
+}
