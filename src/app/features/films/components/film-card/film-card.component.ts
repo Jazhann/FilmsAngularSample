@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { Constants } from '@shared/constants';
 import { Film } from '../../models/film.model';
 
 @Component({
@@ -6,15 +8,12 @@ import { Film } from '../../models/film.model';
   templateUrl: './film-card.component.html',
   styleUrls: ['./film-card.component.scss']
 })
-export class FilmCardComponent implements OnInit {
+export class FilmCardComponent {
   @Input() film!: Film;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
   getImage(image: string) {
-    return image != null ? image : './assets/images/imageNotFound.jpg'
+    return image != null ? image : Constants.ROUTE_IMAGE_NOT_FOUND;
   }
 }

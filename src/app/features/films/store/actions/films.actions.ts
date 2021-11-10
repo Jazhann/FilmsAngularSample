@@ -1,13 +1,14 @@
 import { createAction, props } from '@ngrx/store';
+import { Constants } from '@shared/constants';
 import { Film } from '../../models/film.model';
 
 
 export const fetchFilms = createAction(
-    '[Films] Fetch Films'
+    Constants.ACTION_FILMS_FETCH
 );
 
 export const setFilms = createAction(
-    '[Films] Set Films',
+    Constants.ACTION_FILMS_SET,
     props<{ films: Film[] }>()
 );
 

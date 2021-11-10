@@ -1,6 +1,7 @@
 import { ActionReducerMap } from '@ngrx/store';
-import { Film } from './features/films/models/film.model';
-import { filmsReducer } from './features/films/redux/films.reducer';
+import { Film } from '@features/films/models/film.model';
+import { filmsReducer } from '@features/films/store/films.reducer';
+
 
 export interface AppState {
     films: Film[]

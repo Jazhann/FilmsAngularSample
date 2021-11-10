@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { LayoutService } from '@shared/services/layout.service';
-import { Observable } from 'rxjs';
-import { AppState } from 'src/app/app.reducer';
-import { Film } from './models/film.model';
 
-import * as actions from './redux/actions/films.actions';
+import { LayoutService } from '@shared/services/layout.service';
+
+import { Constants } from '@shared/constants';
+import { AppState } from '@core/app.reducer';
+import { Film } from './models/film.model';
+import * as actions from './store/actions/films.actions';
 
 @Component({
   selector: 'app-films',
@@ -15,18 +18,18 @@ import * as actions from './redux/actions/films.actions';
 })
 export class FilmsComponent implements OnInit {
 
-  films$: Observable<Film[]> = this.store.select('films');
+  films$: Observable<Film[]> = this.store.select(state => state.films);
 
   constructor(
-    private store: Store<AppState>,
     private layoutService: LayoutService,
-    private translate: TranslateService
+    private store: Store<AppState>,
+    private translate: TranslateService,
   ) { 
 
   }
 
   ngOnInit(): void {
-    this.layoutService.setTitle(this.translate.instant('films.title'));
+    this.layoutService.setTitle(this.translate.instant(Constants.FILMS_TITLE));
     this.store.dispatch(actions.fetchFilms());
   }
 

@@ -2,13 +2,13 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav>
       <mat-nav-list>
-        <a mat-list-item [routerLink]="'/films'" (click)="menuToggle()"> Peliculas </a>
-        <a mat-list-item [routerLink]="'/actors'" (click)="menuToggle()"> Actores </a>
-        <a mat-list-item [routerLink]="'/studios'" (click)="menuToggle()"> Estudios </a>
+        <a mat-list-item [routerLink]="CONST.ROUTE_FILMS" (click)="menuToggle()"> {{CONST.SIDEBAR_FILMS | translate}} </a>
+        <a mat-list-item [routerLink]="CONST.ROUTE_ACTORS" (click)="menuToggle()"> {{CONST.SIDEBAR_ACTORS | translate}} </a>
+        <a mat-list-item [routerLink]="CONST.ROUTE_COMPANIES" (click)="menuToggle()"> {{CONST.SIDEBAR_COMPANIES | translate}} </a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <div style="height: 94vh;">
+      <div class="content">
         <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>

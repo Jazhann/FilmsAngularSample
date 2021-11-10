@@ -1,3 +1,6 @@
 {
-    "films.title" : "Peliculas"
+    "films.title" : "Peliculas",
+    "films.sidebar": "Peliculas", 
+    "actors.sidebar": "Actores",
+    "companies.sidebar": "Estudios"
   }

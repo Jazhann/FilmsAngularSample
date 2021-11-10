@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { map, catchError, switchMap } from 'rxjs/operators';
+
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+
 import { FilmsService } from '../../services/films.service';
 import * as actions from '../actions/films.actions';
 
