@@ -7,8 +7,23 @@ const routes: Routes = [
     path: '', component: LayoutComponent,
     children: [
       {
+        path: '',
+        redirectTo: '/films',
+        pathMatch: 'full',
+      },
+      {
         path: 'films',
         loadChildren: () => import('../features/films/films.module').then(m => m.FilmsModule)
+      },
+      {
+        path: 'actors',
+        redirectTo: '/films',
+        pathMatch: 'full',
+      },
+      {
+        path: 'companies',
+        redirectTo: '/films',
+        pathMatch: 'full',
       }
     ]
   }

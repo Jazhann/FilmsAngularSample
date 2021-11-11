@@ -1,9 +1,9 @@
 <mat-card class="film-card">
-    <mat-card-header class="film-card__header">
-      <mat-card-title>{{film.title}}</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image src="{{getImage(film.poster)}}" alt="{{film.title}}">
-    <mat-card-content class="film-card__content">
-      <span *ngFor="let genre of film.genre">#{{genre}}&nbsp;</span>
-    </mat-card-content>
-  </mat-card>
+  <mat-card-header class="film-card__header">
+    <mat-card-title>{{film.title}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src="{{filmsService.getImage(film.poster)}}" alt="{{film.title}}">
+  <mat-card-content class="film-card__content">
+    <span *ngFor="let genre of film.genre">#{{genre}}&nbsp;</span>
+  </mat-card-content>
+</mat-card>

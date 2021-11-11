@@ -5,8 +5,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule)
+  },
+  { 
+    path: '**', 
+    redirectTo: '/films',
+    pathMatch: 'full',
   }
-  // { path: '**', component: }
 ];
 
 @NgModule({

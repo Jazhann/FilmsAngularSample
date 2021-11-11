@@ -12,3 +12,12 @@ export const setFilms = createAction(
     props<{ films: Film[] }>()
 );
 
+export const updateFilm = createAction(
+    Constants.ACTION_FILMS_UPDATE,
+    props<{ film: Film }>()
+);
+
+export const deleteFilm = createAction(
+    Constants.ACTION_FILMS_DELETE,
+    props<{ filmId: number }>()
+);
