@@ -29,8 +29,9 @@ export class Constants {
     public static ACTION_FILMS_CREATE = '[Films] Create Film';
     public static ACTION_COMPANIES_FETCH = '[Companies] Fetch Companies';
     public static ACTION_COMPANIES_SET = '[Companies] Set Companies';
+    public static ACTION_COMPANIES_UPDATE_FILMS = '[Companies] Update Companies Films';
     public static ACTION_ACTORS_FETCH = '[Actors] Fetch Actors';
     public static ACTION_ACTORS_SET = '[Actors] Set Actors';
-
+    public static ACTION_ACTORS_UPDATE_FILMS = '[Actors] Update Actors Films';
 
 }

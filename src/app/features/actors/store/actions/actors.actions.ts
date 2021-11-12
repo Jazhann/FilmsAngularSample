@@ -12,4 +12,9 @@ export const setActors = createAction(
     props<{ actors: Actor[] }>()
 );
 
+export const updateActorsFilms = createAction(
+    Constants.ACTION_ACTORS_UPDATE_FILMS,
+    props<{ filmId: number, oldActors?: number[], newActors: number[] }>()
+);
+
 

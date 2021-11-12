@@ -12,3 +12,7 @@ export const setCompanies = createAction(
     props<{ companies: Company[] }>()
 );
 
+export const updateCompaniesFilms = createAction(
+    Constants.ACTION_COMPANIES_UPDATE_FILMS,
+    props<{ filmId: number, oldCompany?: number, newCompany: number }>()
+);
