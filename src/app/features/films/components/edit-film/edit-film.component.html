@@ -10,45 +10,46 @@
          
              <mat-form-field class="edit-film-card__content__form__half-field" appearance="fill">
                 <mat-label>Puntuación</mat-label>
-                <input matInput formControlName="score" disbled="disabled">
+                <input matInput type="number" formControlName="score">
               </mat-form-field>
 
               <mat-form-field class="edit-film-card__content__form__half-field" appearance="fill">
                 <mat-label>Duracion</mat-label>
-                <input matInput formControlName="length">
+                <input matInput type="number" formControlName="length">
               </mat-form-field>
           
               <mat-form-field class="edit-film-card__content__form__field" appearance="fill">
                 <mat-label>Actores</mat-label>
                 <mat-select formControlName="actor" (selectionChange)="addActor()">
                     <mat-option *ngFor="let actor of actors$ | async" 
-                    [value]='actor'>{{getActorName(actor)}}</mat-option>
+                    [value]='actor'>{{filmsService.getActorName(actor)}}</mat-option>
                 </mat-select>
               </mat-form-field>
+              
               <p *ngFor="let actor of filmMapped.actors" class="edit-film-card__content__form__text">
-                  {{getActorName(actor)}}
+                  {{filmsService.getActorName(actor)}}
                     <mat-icon matSuffix *ngIf="!disabled" 
                     (click)="deleteActor(actor.id)"
                     class="edit-film-card__content__form__text__icon"
                     >remove_circle_outline</mat-icon>
-                </p>
+              </p>
 
               <mat-form-field class="edit-film-card__content__form__field" appearance="fill">
                 <mat-label>Estudio</mat-label>
                 <mat-select formControlName="company"  (selectionChange)="changeCompany()">
                     <mat-option *ngFor="let company of companies$ | async" 
                     [value]='company'>{{company.name}}</mat-option>
-                  </mat-select>
+                </mat-select>
               </mat-form-field>
               <p class="edit-film-card__content__form__text">{{filmMapped.company?.name}}</p>
 
               <mat-form-field class="edit-film-card__content__form__field" appearance="fill">
                 <mat-label>Generos</mat-label>
-                <input matInput formControlName="genre">
+                <input matInput type="text" formControlName="genre">
                 <mat-icon matSuffix *ngIf="!disabled" 
                 (click)="addGenre()"
                 class="edit-film-card__content__form__field__icon"
-                >libray_add</mat-icon>
+                >add</mat-icon>
               </mat-form-field>
               <span *ngFor="let genre of filmMapped.genre" class="edit-film-card__content__form__text">
                   #{{genre}}&nbsp;&nbsp;
@@ -56,7 +57,7 @@
                   (click)="deleteGenre(genre)"
                   class="edit-film-card__content__form__text__icon"
                   >remove_circle_outline</mat-icon>
-                </span>
+              </span>
           </form>
 
           <div class="edit-film-card__content__buttons">

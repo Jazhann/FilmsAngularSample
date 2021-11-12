@@ -23,4 +23,15 @@
             max-width: calc(25% - 2vw);
         }
     }
+
+    &__button {
+        position: fixed;
+        bottom: 5vh;
+        right: 5vw;
+
+        @media screen and (min-width: 40em) {
+            right: 15vw;
+        }
+
+    }
 }

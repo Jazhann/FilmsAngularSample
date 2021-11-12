@@ -28,6 +28,11 @@ export class FilmsService {
     return image != null ? image : Constants.ROUTE_IMAGE_NOT_FOUND;
   }
 
+  getActorName(actor: Actor) {
+    return actor.first_name + ' ' + actor.last_name;
+  }
+
+
   async mapData (film: Film): Promise<filmMapped> {
     const actors = await firstValueFrom(this.store.select(state => state.actors)
     .pipe(map(actors => 

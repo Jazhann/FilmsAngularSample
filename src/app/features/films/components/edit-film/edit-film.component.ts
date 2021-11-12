@@ -34,12 +34,12 @@ export class EditFilmComponent implements OnInit {
   });
 
   constructor(
-    private layoutService: LayoutService,
     private location: Location,
     private route: ActivatedRoute,
     private router: Router,
     private store: Store<AppState>,
     public filmsService: FilmsService,
+    public layoutService: LayoutService,
   ) { }
 
   async ngOnInit() { 
@@ -57,10 +57,6 @@ export class EditFilmComponent implements OnInit {
   setFormValues() {
     this.filmForm.patchValue({score: this.filmMapped.imdbRating});
     this.filmForm.patchValue({length: this.filmMapped.duration});
-  }
-
-  getActorName(actor: Actor) {
-    return actor.first_name + ' ' + actor.last_name;
   }
 
   editFilm() {
@@ -106,7 +102,7 @@ export class EditFilmComponent implements OnInit {
 
   addGenre() {
     const genreToAdd = this.filmForm.get('genre')?.value;
-    if (genreToAdd !== '') {
+    if (genreToAdd !== '' && !this.filmMapped.genre.some(genre => genre === genreToAdd)) {
       this.filmMapped.genre = this.filmMapped.genre.concat([genreToAdd]);
       this.filmForm.patchValue({genre: ''});
     }

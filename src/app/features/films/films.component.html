@@ -6,6 +6,9 @@
     class="film-container__card" 
     [routerLink]="CONST.ROUTE_FILMS_EDIT"
     [queryParams]="{id: film.id}"></app-film-card>
+    <button mat-fab color="primary" aria-label="Borrar" [routerLink]="CONST.ROUTE_FILMS_CREATE" class="film-container__button">
+        <mat-icon>add</mat-icon>
+      </button>
 </div>
 <ng-template #spinner>
     <div class="spinner-container">

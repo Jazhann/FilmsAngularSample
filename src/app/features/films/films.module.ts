@@ -18,6 +18,7 @@ import { FilmsService } from './services/films.service';
 import { EditFilmComponent } from './components/edit-film/edit-film.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { CreateFilmComponent } from './components/create-film/create-film.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { MatButtonModule } from '@angular/material/button';
     FilmsComponent,
     FilmCardComponent,
     EditFilmComponent,
+    CreateFilmComponent,
   ],
   imports: [
     CommonModule,

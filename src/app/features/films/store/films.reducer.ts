@@ -12,5 +12,6 @@ export const filmsReducer = createReducer(initialState,
     }
   )),
   on( actions.deleteFilm , (state, { filmId }) => state.filter(film => film.id !== filmId)),
+  on( actions.createFilm , (state, { film }) => [...state, film]),
 );
 

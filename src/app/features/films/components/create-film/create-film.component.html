@@ -1,0 +1,84 @@
+
+<mat-card class="create-film-card">
+    <mat-card-content class="create-film-card__content">
+        <form class="create-film-card__content__form" [formGroup]="filmForm">
+    
+              <mat-form-field class="create-film-card__content__form__field" appearance="fill">
+                <mat-label>Título</mat-label>
+                <input matInput type="text" formControlName="title">
+              </mat-form-field>
+          
+
+              <mat-form-field class="create-film-card__content__form__field" appearance="fill">
+                <mat-label>Poster(url)</mat-label>
+                <input matInput type="url" formControlName="image">
+              </mat-form-field>
+          
+              <mat-form-field class="create-film-card__content__form__field" appearance="fill">
+                <mat-label>Actores</mat-label>
+                <mat-select formControlName="actor" (selectionChange)="addActor()">
+                    <mat-option *ngFor="let actor of actors$ | async" 
+                    [value]='actor'>{{filmsService.getActorName(actor)}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <ng-container *ngIf="actors.length > 0">
+                  <p *ngFor="let actor of actors" class="create-film-card__content__form__text">
+                      {{filmsService.getActorName(actor)}}
+                        <mat-icon matSuffix
+                        (click)="deleteActor(actor.id)"
+                        class="create-film-card__content__form__text__icon"
+                        >remove_circle_outline</mat-icon>
+                  </p>
+              </ng-container>
+
+              <mat-form-field class="create-film-card__content__form__field" appearance="fill">
+                <mat-label>Estudio</mat-label>
+                <mat-select formControlName="company">
+                    <mat-option *ngFor="let company of companies$ | async" 
+                    [value]='company'>{{company.name}}</mat-option>
+                  </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="create-film-card__content__form__field" appearance="fill">
+                <mat-label>Generos</mat-label>
+                <input matInput type="text" formControlName="genre">
+                <mat-icon matSuffix
+                (click)="addGenre()"
+                class="create-film-card__content__form__field__icon"
+                >add</mat-icon>
+              </mat-form-field>
+              <ng-container *ngIf="genres.length > 0">
+                <p>
+                    <span *ngFor="let genre of genres" class="create-film-card__content__form__text">
+                        #{{genre}}&nbsp;&nbsp;
+                        <mat-icon matSuffix 
+                        (click)="deleteGenre(genre)"
+                        class="create-film-card__content__form__text__icon"
+                        >remove_circle_outline</mat-icon>
+                    </span>
+                </p>
+              </ng-container>
+
+              <mat-form-field class="create-film-card__content__form__third-field margin-right" appearance="fill">
+                <mat-label>Puntuación</mat-label>
+                <input matInput type="number" formControlName="score">
+              </mat-form-field>
+
+              <mat-form-field class="create-film-card__content__form__third-field margin-right" appearance="fill">
+                <mat-label>Duracion</mat-label>
+                <input matInput type="number" formControlName="length">
+              </mat-form-field>
+
+              <mat-form-field class="create-film-card__content__form__third-field" appearance="fill">
+                <mat-label>Año</mat-label>
+                <input matInput type="number" formControlName="year">
+              </mat-form-field>
+          </form>
+
+          <div class="create-film-card__content__buttons">
+            <button mat-fab color="accent" aria-label="Guardar" (click)="saveFilm()">
+                <mat-icon>save</mat-icon>
+            </button>
+          </div>
+    </mat-card-content>
+</mat-card>

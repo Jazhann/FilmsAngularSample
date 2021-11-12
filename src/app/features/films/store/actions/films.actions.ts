@@ -21,3 +21,8 @@ export const deleteFilm = createAction(
     Constants.ACTION_FILMS_DELETE,
     props<{ filmId: number }>()
 );
+
+export const createFilm = createAction(
+    Constants.ACTION_FILMS_CREATE,
+    props<{ film: Film }>()
+);

@@ -1,0 +1,60 @@
+.create-film-card {
+    margin: 0vw 10vw;
+
+    &__content {
+        margin-top: 5vh;
+
+        &__form {
+            width: 75%;
+            margin: auto;
+
+            @media screen and (max-width: 40em) {
+                width: 100%;
+            }
+         
+
+            &__field {
+                width: 100%;
+
+                &__icon {
+                    cursor: pointer;
+                }
+            }
+
+            &__third-field {
+                width: 31%;
+
+                @media screen and (max-width: 40em) {
+                    width: 100%;
+                }
+            }
+
+            &__text {
+                color: rgba(255,255,255,.5);
+
+                &__icon {
+                    font-size: 14px;
+                    height: 14px;
+                    vertical-align: middle;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        &__buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: right;
+            margin-right: 12.5%;
+
+            @media screen and (max-width: 40em) {
+                margin-right: unset;
+            }
+        }
+
+    }
+}
+
+.margin-right {
+    margin-right: 3.5%;
+}

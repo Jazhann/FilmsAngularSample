@@ -10,6 +10,7 @@ export class Constants {
     public static ROUTE_API_ACTORS = 'actors';
     public static ROUTE_FILMS = '/films';
     public static ROUTE_FILMS_EDIT = '/films/edit'
+    public static ROUTE_FILMS_CREATE = '/films/create'
     public static ROUTE_ACTORS = '/actors';
     public static ROUTE_COMPANIES = '/companies';
     public static ROUTE_EDIT = 'edit';
@@ -25,6 +26,7 @@ export class Constants {
     public static ACTION_FILMS_SET = '[Films] Set Films';
     public static ACTION_FILMS_UPDATE = '[Films] Update Film';
     public static ACTION_FILMS_DELETE = '[Films] Delete Film';
+    public static ACTION_FILMS_CREATE = '[Films] Create Film';
     public static ACTION_COMPANIES_FETCH = '[Companies] Fetch Companies';
     public static ACTION_COMPANIES_SET = '[Companies] Set Companies';
     public static ACTION_ACTORS_FETCH = '[Actors] Fetch Actors';
