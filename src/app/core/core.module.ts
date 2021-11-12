@@ -20,8 +20,6 @@ import { ActorsModule } from '@features/actors/actors.module';
 import { CompaniesModule } from '@features/companies/companies.module';
 
 
-
-
 @NgModule({
   declarations: [],
   imports: [

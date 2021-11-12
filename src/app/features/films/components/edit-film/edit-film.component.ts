@@ -48,7 +48,7 @@ export class EditFilmComponent implements OnInit {
   ) { }
 
   async ngOnInit() { 
-    let id: number = await firstValueFrom(this.route.queryParams.pipe(map(params => params['id'])));
+    const id = await firstValueFrom(this.route.queryParams.pipe(map(params => params['id'])));
     const film = await firstValueFrom(this.store.select(state => state.films).pipe(map( films => films.find( film => film.id === +id))));
     if (film != null) {
       this.layoutService.setTitle(film.title + ' (' + film.year + ')' );
