@@ -2,6 +2,15 @@ export class Constants {
 
     //FILMS 
     public static FILMS_TITLE = 'films.title';
+    public static FILMS_FORM_TITLE = 'films.form.title';
+    public static FILMS_FORM_POSTER = 'films.form.poster';
+    public static FILMS_FORM_ACTORS = 'films.form.actors';
+    public static FILMS_FORM_COMPANY = 'films.form.company';
+    public static FILMS_FORM_GENRES = 'films.form.genres';
+    public static FILMS_FORM_SCORE = 'films.form.score';
+    public static FILMS_FORM_LENGTH = 'films.form.length';
+    public static FILMS_FORM_YEAR = 'films.form.year';
+    public static FILMS_CREATE_TITLE = 'films.create.title';
 
     //ROUTES
     public static ROUTE_IMAGE_NOT_FOUND = './assets/images/imageNotFound.jpg';

@@ -2,5 +2,14 @@
     "films.title" : "Peliculas",
     "films.sidebar": "Peliculas", 
     "actors.sidebar": "Actores",
-    "companies.sidebar": "Estudios"
+    "companies.sidebar": "Estudios",
+    "films.form.title": "Título",
+    "films.form.poster": "Poster(url)",
+    "films.form.actors": "Actores",
+    "films.form.company": "Estudio",
+    "films.form.genres": "Generos",
+    "films.form.score": "Puntuación",
+    "films.form.length": "Duración",
+    "films.form.year": "Año",
+    "films.create.title": "Nueva película"
   }

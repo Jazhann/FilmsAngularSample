@@ -26,13 +26,17 @@ export class FilmsComponent implements OnInit {
     private layoutService: LayoutService,
     private store: Store<AppState>,
     private translate: TranslateService,
-    public spinnerService: SpinnerService,
+    private spinnerService: SpinnerService,
   ) { 
 
   }
 
   ngOnInit(): void {
     this.layoutService.setTitle(this.translate.instant(Constants.FILMS_TITLE));
+  }
+
+  showSpinner() {
+    return this.spinnerService.status();
   }
 
 }

@@ -12,6 +12,10 @@ export class FilmCardComponent {
   @Input() film!: Film;
 
   constructor(
-    public filmsService: FilmsService
+    private filmsService: FilmsService
   ) { }
+
+  getImage(url: string) {
+    return this.filmsService.getImage(url);
+  }
 }

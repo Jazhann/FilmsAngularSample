@@ -27,7 +27,7 @@
       "@features/*": ["src/app/features/*"],
       "@layout/*": ["src/app/layout/*"],
       "@models/*": ["src/app/models/*"],
-      "@shared/*": ["src/app/shared/*"],
+      "@shared/*": ["src/app/shared/*"]
     }
   },
   "angularCompilerOptions": {

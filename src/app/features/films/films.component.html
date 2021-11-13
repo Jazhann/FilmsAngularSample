@@ -1,12 +1,12 @@
 
-<div class="film-container" *ngIf="spinnerService.status() | async; else spinner">
+<div class="film-container" *ngIf="showSpinner()| async; else spinner">
     <app-film-card 
     *ngFor="let film of films$ | async" 
     [film]="film" 
     class="film-container__card" 
     [routerLink]="CONST.ROUTE_FILMS_EDIT"
     [queryParams]="{id: film.id}"></app-film-card>
-    <button mat-fab color="primary" aria-label="Borrar" [routerLink]="CONST.ROUTE_FILMS_CREATE" class="film-container__button">
+    <button mat-fab color="primary" [routerLink]="CONST.ROUTE_FILMS_CREATE" class="film-container__button">
         <mat-icon>add</mat-icon>
       </button>
 </div>

@@ -11,7 +11,7 @@ export class HeaderComponent {
   @Output() menuToggle = new EventEmitter();
 
   constructor(
-    public layoutService: LayoutService,
+    private layoutService: LayoutService,
     private location: Location
   ) { }
 
@@ -21,6 +21,14 @@ export class HeaderComponent {
 
   back () {
     this.location.back();
+  }
+
+  showBackButton() {
+    return this.layoutService.showBackButton();
+  }
+
+  getTitle() {
+    return this.layoutService.getTitle();
   }
 
 }

@@ -1,9 +1,9 @@
 <mat-toolbar class="header">
-    <button *ngIf="!layoutService.showBackButton()" mat-icon-button class="header-menu" aria-label="Menu" (click)="toggle()">
+    <button *ngIf="!showBackButton()" mat-icon-button class="header-menu" (click)="toggle()">
      <mat-icon>menu</mat-icon>
    </button>
-   <button *ngIf="layoutService.showBackButton()" mat-icon-button class="header-menu" aria-label="Back" (click)="back()">
+   <button *ngIf="showBackButton()" mat-icon-button class="header-menu" (click)="back()">
      <mat-icon>arrow_back</mat-icon>
   </button>
-   <span>{{layoutService.getTitle() | async}}</span>
+   <span>{{getTitle() | async}}</span>
  </mat-toolbar>

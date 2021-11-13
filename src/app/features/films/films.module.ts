@@ -19,6 +19,7 @@ import { EditFilmComponent } from './components/edit-film/edit-film.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CreateFilmComponent } from './components/create-film/create-film.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { CreateFilmComponent } from './components/create-film/create-film.compon
     MatInputModule,
     MatSelectModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    TranslateModule.forChild()
   ],
   providers: [
     FilmsService,

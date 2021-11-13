@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import { Store } from '@ngrx/store';
 import { AppState } from '@core/app.reducer';
 import * as actions from '../../store/actions/films.actions';
@@ -15,6 +17,7 @@ import { FilmsService } from '@features/films/services/films.service';
 import { Actor } from '@features/actors/models/actor.model';
 import { Company } from '@features/companies/models/company.model';
 import { Film } from '@features/films/models/film.model';
+import { Constants } from '@shared/constants';
 
 @Component({
   selector: 'app-create-film',
@@ -22,6 +25,7 @@ import { Film } from '@features/films/models/film.model';
   styleUrls: ['./create-film.component.scss']
 })
 export class CreateFilmComponent implements OnInit {
+  CONST = Constants;
   actors: Actor[] = [];
   genres: string[] = [];
   actors$: Observable <Actor[]> = this.store.select(state => state.actors);
@@ -38,14 +42,15 @@ export class CreateFilmComponent implements OnInit {
   });
 
   constructor(
-    private store: Store<AppState>,
-    public filmsService: FilmsService,
+    private filmsService: FilmsService,
     private layoutService: LayoutService,
-    private location: Location
+    private location: Location,
+    private store: Store<AppState>,
+    public translate: TranslateService
   ) { }
 
   ngOnInit(): void {
-    this.layoutService.setTitle('Nueva Pelicula');
+    this.layoutService.setTitle(this.translate.instant(this.CONST.FILMS_CREATE_TITLE));
   }
 
   saveFilm() {
@@ -64,6 +69,10 @@ export class CreateFilmComponent implements OnInit {
     this.store.dispatch(actorsActions.updateActorsFilms({filmId: film.id, newActors: film.actors}));
     
     this.location.back();
+  }
+
+  getActorName(actor: Actor) {
+    return this.filmsService.getActorName(actor);
   }
 
   
@@ -91,7 +100,7 @@ export class CreateFilmComponent implements OnInit {
     this.genres = this.genres.filter(genre => genre !== genreToDelete);
   }
 
-  isUrl (string: string): boolean {
+  private isUrl (string: string): boolean {
     try { 
       return Boolean(new URL(string)); 
     }

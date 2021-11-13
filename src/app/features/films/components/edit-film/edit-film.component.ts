@@ -16,6 +16,7 @@ import { FilmsService } from '@features/films/services/films.service';
 import { filmMapped } from '@features/films/models/filmMapped.model';
 import { Actor } from '@features/actors/models/actor.model';
 import { Company } from '@features/companies/models/company.model';
+import { Constants } from '@shared/constants';
 
 
 @Component({
@@ -24,6 +25,7 @@ import { Company } from '@features/companies/models/company.model';
   styleUrls: ['./edit-film.component.scss']
 })
 export class EditFilmComponent implements OnInit {
+  CONST = Constants;
   filmMapped!: filmMapped;
   actors$: Observable <Actor[]> = this.store.select(state => state.actors);
   companies$: Observable <Company[]> = this.store.select(state => state.companies);
@@ -40,11 +42,11 @@ export class EditFilmComponent implements OnInit {
 
   constructor(
     private location: Location,
+    private filmsService: FilmsService,
+    private layoutService: LayoutService,
     private route: ActivatedRoute,
     private router: Router,
     private store: Store<AppState>,
-    public filmsService: FilmsService,
-    public layoutService: LayoutService,
   ) { }
 
   async ngOnInit() { 
@@ -60,12 +62,15 @@ export class EditFilmComponent implements OnInit {
       this.router.navigate(['/']);
     }
   }
-  
-  setFormValues() {
-    this.filmForm.patchValue({score: this.filmMapped.imdbRating});
-    this.filmForm.patchValue({length: this.filmMapped.duration});
+
+  getActorName(actor: Actor) {
+    return this.filmsService.getActorName(actor);
   }
 
+  getImage(url: string) {
+    return this.filmsService.getImage(url);
+  }
+  
   editFilm() {
     if (this.disabled) {
       Object.keys(this.filmForm.controls).forEach(key => {
@@ -78,26 +83,6 @@ export class EditFilmComponent implements OnInit {
       });
     }
     this.disabled = !this.disabled;
-  }
-
-  dispatchData() {
-    const film = {
-      id: this.filmMapped.id,
-      title: this.filmMapped.title,
-      poster: this.filmMapped.poster,
-      year: this.filmMapped.year,
-      duration: this.filmForm.value.lenght,
-      imdbRating: this.filmForm.value.score,
-      actors: this.filmMapped.actors.map(actor => actor.id),
-      genre: this.filmMapped.genre,
-    };
-    this.store.dispatch(actions.updateFilm({film}));
-    if (this.filmCompanyId !== this.filmMapped.company?.id) {
-      this.store.dispatch(companiesActions.updateCompaniesFilms({filmId: film.id, oldCompany: this.filmCompanyId, newCompany: this.filmMapped.company!.id}))
-    }
-    if (JSON.stringify(this.filmActors.sort()) !== JSON.stringify([...film.actors].sort())) {
-      this.store.dispatch(actorsActions.updateActorsFilms({filmId: film.id, oldActors: this.filmActors, newActors: film.actors}));
-    }
   }
 
   deleteFilm() {
@@ -133,5 +118,31 @@ export class EditFilmComponent implements OnInit {
     this.filmMapped.company = this.filmForm.value.company;
     this.filmForm.patchValue({company: ''});
   }
+  
+  private dispatchData() {
+    const film = {
+      id: this.filmMapped.id,
+      title: this.filmMapped.title,
+      poster: this.filmMapped.poster,
+      year: this.filmMapped.year,
+      duration: this.filmForm.value.lenght,
+      imdbRating: this.filmForm.value.score,
+      actors: this.filmMapped.actors.map(actor => actor.id),
+      genre: this.filmMapped.genre,
+    };
+    this.store.dispatch(actions.updateFilm({film}));
+    if (this.filmCompanyId !== this.filmMapped.company?.id) {
+      this.store.dispatch(companiesActions.updateCompaniesFilms({filmId: film.id, oldCompany: this.filmCompanyId, newCompany: this.filmMapped.company!.id}))
+    }
+    if (JSON.stringify(this.filmActors.sort()) !== JSON.stringify([...film.actors].sort())) {
+      this.store.dispatch(actorsActions.updateActorsFilms({filmId: film.id, oldActors: this.filmActors, newActors: film.actors}));
+    }
+  }
+
+  private setFormValues() {
+    this.filmForm.patchValue({score: this.filmMapped.imdbRating});
+    this.filmForm.patchValue({length: this.filmMapped.duration});
+  }
+
 
 }
