@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LayoutService } from '@shared/services/layout.service';
 
 import { HeaderComponent } from './header.component';
 
@@ -8,7 +10,9 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      imports: [ RouterTestingModule ],
+      declarations: [ HeaderComponent ],
+      providers: [ LayoutService ]
     })
     .compileComponents();
   });

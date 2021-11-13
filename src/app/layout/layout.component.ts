@@ -25,8 +25,8 @@ export class LayoutComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
   constructor(
-    public spinnerService: SpinnerService,
     private layoutService: LayoutService,
+    private spinnerService: SpinnerService,
     private store: Store<AppState>,
   ) { 
     this.layoutService.setTitle('Home');
