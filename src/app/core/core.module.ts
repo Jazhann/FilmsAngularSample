@@ -18,13 +18,19 @@ import { CompaniesEffects } from '@features/companies/store/effects/companies.ef
 
 import { ActorsModule } from '@features/actors/actors.module';
 import { CompaniesModule } from '@features/companies/companies.module';
+import { ErrorComponent } from './components/error/error.component';
+import { TranslateModule } from '@ngx-translate/core';
 
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ErrorComponent
+  ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
+    TranslateModule.forChild(),
     StoreModule.forRoot( appReducers ),
     StoreDevtoolsModule.instrument({
       maxAge: 25, 
@@ -33,7 +39,8 @@ import { CompaniesModule } from '@features/companies/companies.module';
     EffectsModule.forRoot([FilmsEffects, ActorsEffects, CompaniesEffects]),
     FilmsModule,
     ActorsModule,
-    CompaniesModule
+    CompaniesModule,
+    MatButtonModule,
   ]
 })
 export class CoreModule { }

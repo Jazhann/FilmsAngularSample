@@ -13,7 +13,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { LayoutComponent } from './layout.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { ErrorComponent } from './components/error/error.component';
 
 
 
@@ -21,8 +20,7 @@ import { ErrorComponent } from './components/error/error.component';
   declarations: [
     LayoutComponent,
     HeaderComponent,
-    NotFoundComponent,
-    ErrorComponent
+    NotFoundComponent
   ],
   imports: [
     CommonModule,

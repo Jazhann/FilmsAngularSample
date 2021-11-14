@@ -27,6 +27,10 @@ export class HeaderComponent {
     return this.layoutService.showBackButton();
   }
 
+  showMenuButton() {
+    return this.layoutService.showMenuButton();
+  }
+
   getTitle() {
     return this.layoutService.getTitle();
   }

@@ -1,5 +1,5 @@
 <mat-toolbar class="header">
-    <button *ngIf="!showBackButton()" mat-icon-button class="header-menu" (click)="toggle()">
+    <button *ngIf="!showBackButton() && showMenuButton()" mat-icon-button class="header-menu" (click)="toggle()">
      <mat-icon>menu</mat-icon>
    </button>
    <button *ngIf="showBackButton()" mat-icon-button class="header-menu" (click)="back()">

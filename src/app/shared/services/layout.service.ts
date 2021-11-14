@@ -24,4 +24,8 @@ export class LayoutService {
   showBackButton() {
     return this.router.url.search(Constants.ROUTE_EDIT) >= 0 || this.router.url.search(Constants.ROUTE_CREATE) >= 0
   }
+
+  showMenuButton() {
+    return this.router.url.search(Constants.ROUTE_ERROR);
+  }
 }
