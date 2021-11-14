@@ -1,5 +1,11 @@
 export class Constants {
 
+    //LAYOUT
+    public static PAGE_NOT_FOUND = 'page.not.found';
+    public static PAGE_NOT_FOUND_TITLE = 'page.not.found.title';
+    public static ERROR = 'error';
+    public static ERROR_TITLE = 'error.title';
+
     //FILMS 
     public static FILMS_TITLE = 'films.title';
     public static FILMS_FORM_TITLE = 'films.form.title';
@@ -24,6 +30,7 @@ export class Constants {
     public static ROUTE_COMPANIES = '/companies';
     public static ROUTE_EDIT = 'edit';
     public static ROUTE_CREATE = 'create';
+    public static ROUTE_ERROR = '/error';
 
     //SIDEBAR
     public static SIDEBAR_FILMS = 'films.sidebar';
@@ -36,11 +43,14 @@ export class Constants {
     public static ACTION_FILMS_UPDATE = '[Films] Update Film';
     public static ACTION_FILMS_DELETE = '[Films] Delete Film';
     public static ACTION_FILMS_CREATE = '[Films] Create Film';
+    public static ACTION_FILMS_ERROR = '[Films] Error';
     public static ACTION_COMPANIES_FETCH = '[Companies] Fetch Companies';
     public static ACTION_COMPANIES_SET = '[Companies] Set Companies';
     public static ACTION_COMPANIES_UPDATE_FILMS = '[Companies] Update Companies Films';
+    public static ACTION_COMPANIES_ERROR = '[Companies] Error';
     public static ACTION_ACTORS_FETCH = '[Actors] Fetch Actors';
     public static ACTION_ACTORS_SET = '[Actors] Set Actors';
     public static ACTION_ACTORS_UPDATE_FILMS = '[Actors] Update Actors Films';
+    public static ACTION_ACTORS_ERROR = '[Actors] Error';
 
 }

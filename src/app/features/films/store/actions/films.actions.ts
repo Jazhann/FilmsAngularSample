@@ -7,6 +7,10 @@ export const fetchFilms = createAction(
     Constants.ACTION_FILMS_FETCH
 );
 
+export const errorLoadingData = createAction(
+    Constants.ACTION_FILMS_ERROR
+);
+
 export const setFilms = createAction(
     Constants.ACTION_FILMS_SET,
     props<{ films: Film[] }>()

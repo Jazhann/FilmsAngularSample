@@ -7,6 +7,10 @@ export const fetchActors = createAction(
     Constants.ACTION_ACTORS_FETCH
 );
 
+export const errorLoadingData = createAction(
+    Constants.ACTION_ACTORS_ERROR
+);
+
 export const setActors = createAction(
     Constants.ACTION_ACTORS_SET,
     props<{ actors: Actor[] }>()

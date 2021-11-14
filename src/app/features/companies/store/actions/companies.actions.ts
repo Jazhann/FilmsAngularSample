@@ -7,6 +7,10 @@ export const fetchCompanies = createAction(
     Constants.ACTION_COMPANIES_FETCH
 );
 
+export const errorLoadingData = createAction(
+    Constants.ACTION_COMPANIES_ERROR
+);
+
 export const setCompanies = createAction(
     Constants.ACTION_COMPANIES_SET,
     props<{ companies: Company[] }>()

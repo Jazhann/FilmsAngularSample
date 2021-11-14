@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   { 
     path: '**', 
-    redirectTo: '/films',
+    redirectTo: '/notFound',
     pathMatch: 'full',
   }
 ];

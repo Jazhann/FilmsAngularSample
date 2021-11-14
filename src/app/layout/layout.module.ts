@@ -12,13 +12,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HeaderComponent } from './components/header/header.component';
 import { LayoutComponent } from './layout.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ErrorComponent } from './components/error/error.component';
 
 
 
 @NgModule({
   declarations: [
     LayoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    NotFoundComponent,
+    ErrorComponent
   ],
   imports: [
     CommonModule,

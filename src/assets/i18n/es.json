@@ -1,4 +1,8 @@
 {
+    "page.not.found": "No hemos encontrado la página",
+    "page.not.found.title": "Página no encontrada",
+    "error": "Opps, se ha producido un error",
+    "error.title": "Error",
     "films.title" : "Peliculas",
     "films.sidebar": "Peliculas", 
     "actors.sidebar": "Actores",
