@@ -17,6 +17,7 @@ export class Constants {
     public static FILMS_FORM_LENGTH = 'films.form.length';
     public static FILMS_FORM_YEAR = 'films.form.year';
     public static FILMS_CREATE_TITLE = 'films.create.title';
+    public static FILMS_FORM_ERROR = 'films.form.error';
 
     //ROUTES
     public static ROUTE_IMAGE_NOT_FOUND = './assets/images/imageNotFound.jpg';

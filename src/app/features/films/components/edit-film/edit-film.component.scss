@@ -48,6 +48,13 @@
             }
         }
 
+        &__error {
+            margin-top: 1vh;
+            height: 3vh;
+            color: red;
+            text-align: center;
+        }
+
         &__buttons {
             display: flex;
             gap: 15px;

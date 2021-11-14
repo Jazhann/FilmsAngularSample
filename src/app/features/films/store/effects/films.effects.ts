@@ -30,7 +30,7 @@ export class FilmsEffects {
         ]),
         catchError(() => {
           this.spinnerService.hide();
-          return of( actions.errorLoadingData())
+          return of(actions.errorLoadingData());
         })
       ))
     ) 

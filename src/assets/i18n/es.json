@@ -15,5 +15,6 @@
     "films.form.score": "Puntuación",
     "films.form.length": "Duración",
     "films.form.year": "Año",
-    "films.create.title": "Nueva película"
+    "films.create.title": "Nueva película",
+    "films.form.error": "Revisa los campos vacios"
   }

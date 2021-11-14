@@ -59,6 +59,11 @@
                   >remove_circle_outline</mat-icon>
               </span>
           </form>
+          <div  class="edit-film-card__content__error">
+            <p *ngIf="filmForm.invalid && error">
+              {{CONST.FILMS_FORM_ERROR | translate}}
+            </p>
+          </div>
 
           <div class="edit-film-card__content__buttons">
             <button *ngIf="disabled" mat-fab color="accent" (click)="editFilm()">

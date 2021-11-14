@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -18,6 +18,7 @@ import { Actor } from '@features/actors/models/actor.model';
 import { Company } from '@features/companies/models/company.model';
 import { Film } from '@features/films/models/film.model';
 import { Constants } from '@shared/constants';
+import { validateArray } from '@shared/validators/validators';
 
 @Component({
   selector: 'app-create-film',
@@ -31,15 +32,16 @@ export class CreateFilmComponent implements OnInit {
   actors$: Observable <Actor[]> = this.store.select(state => state.actors);
   companies$: Observable <Company[]> = this.store.select(state => state.companies);
   filmForm = new FormGroup({
-    title: new FormControl(''),
-    image: new FormControl(''),
-    score: new FormControl(''),
-    length: new FormControl(''),
-    actor: new FormControl(''),
-    company: new FormControl(''),
-    genre: new FormControl(''),
-    year: new FormControl('')
+    title: new FormControl('', Validators.required),
+    image: new FormControl('', Validators.required),
+    score: new FormControl('', Validators.required),
+    length: new FormControl('', Validators.required),
+    actor: new FormControl('', validateArray(this.actors)),
+    company: new FormControl('', Validators.required),
+    genre: new FormControl('', validateArray(this.genres)),
+    year: new FormControl('', Validators.required)
   });
+  error = false;
 
   constructor(
     private filmsService: FilmsService,
@@ -54,21 +56,27 @@ export class CreateFilmComponent implements OnInit {
   }
 
   saveFilm() {
-    const film: Film = {
-      id: ~~(Math.random() * 1010),
-      title: this.filmForm.value.title,
-      poster: this.isUrl(this.filmForm.value.image) ? this.filmForm.value.image : null,
-      genre: this.genres,
-      year: this.filmForm.value.year,
-      duration: this.filmForm.value.length,
-      imdbRating: this.filmForm.value.score,
-      actors: this.actors.map(actor => actor.id)
+    if (this.filmForm.valid) {
+      this.error = false;
+      const film: Film = {
+        id: ~~(Math.random() * 1010),
+        title: this.filmForm.value.title,
+        poster: this.isUrl(this.filmForm.value.image) ? this.filmForm.value.image : null,
+        genre: this.genres,
+        year: this.filmForm.value.year,
+        duration: this.filmForm.value.length,
+        imdbRating: this.filmForm.value.score,
+        actors: this.actors.map(actor => actor.id)
+      }
+      this.store.dispatch(actions.createFilm({film}));
+      this.store.dispatch(companiesActions.updateCompaniesFilms({filmId: film.id, newCompany: this.filmForm.value.company.id}))
+      this.store.dispatch(actorsActions.updateActorsFilms({filmId: film.id, newActors: film.actors}));
+      
+      this.location.back();
+    } else {
+      this.error = true;
     }
-    this.store.dispatch(actions.createFilm({film}));
-    this.store.dispatch(companiesActions.updateCompaniesFilms({filmId: film.id, newCompany: this.filmForm.value.company.id}))
-    this.store.dispatch(actorsActions.updateActorsFilms({filmId: film.id, newActors: film.actors}));
-    
-    this.location.back();
+
   }
 
   getActorName(actor: Actor) {

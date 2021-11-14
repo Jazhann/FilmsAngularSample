@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { firstValueFrom, map, Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
@@ -17,6 +17,7 @@ import { filmMapped } from '@features/films/models/filmMapped.model';
 import { Actor } from '@features/actors/models/actor.model';
 import { Company } from '@features/companies/models/company.model';
 import { Constants } from '@shared/constants';
+import { validateArray, validateParam } from '@shared/validators/validators';
 
 
 @Component({
@@ -30,15 +31,13 @@ export class EditFilmComponent implements OnInit {
   actors$: Observable <Actor[]> = this.store.select(state => state.actors);
   companies$: Observable <Company[]> = this.store.select(state => state.companies);
   disabled = true;
-  filmForm = new FormGroup({
-    score: new FormControl({ value: '', disabled: this.disabled }),
-    length: new FormControl({ value: '', disabled: this.disabled }),
-    actor: new FormControl({ value: '', disabled: this.disabled }),
-    company: new FormControl({ value: '', disabled: this.disabled }),
-    genre: new FormControl({ value: '', disabled: this.disabled })
+  filmForm: FormGroup = new FormGroup({
+    score: new FormControl({ value: '', disabled: this.disabled }, Validators.required),
+    length: new FormControl({ value: '', disabled: this.disabled }, Validators.required),
   });
   filmCompanyId!: number;
   filmActors!: number[];
+  error = false;
 
   constructor(
     private location: Location,
@@ -55,6 +54,9 @@ export class EditFilmComponent implements OnInit {
     if (film != null) {
       this.layoutService.setTitle(film.title + ' (' + film.year + ')' );
       this.filmMapped = await this.filmsService.mapData(film);
+      this.filmForm.addControl('actor', new FormControl({ value: '', disabled: this.disabled }, validateArray(this.filmMapped.actors)));
+      this.filmForm.addControl('company', new FormControl({ value: '', disabled: this.disabled }, validateParam(this.filmMapped.company)));
+      this.filmForm.addControl('genre', new FormControl({ value: '', disabled: this.disabled }, validateArray(this.filmMapped.genre)))
       this.filmCompanyId = this.filmMapped.company!.id;
       this.filmActors = [...film.actors];
       this.setFormValues();
@@ -77,10 +79,16 @@ export class EditFilmComponent implements OnInit {
         this.filmForm.get(key)?.enable();
       });
     } else {
-      this.dispatchData();
-      Object.keys(this.filmForm.controls).forEach(key => {
-        this.filmForm.get(key)?.disable();
-      });
+      if (this.filmForm.valid) {
+        this.dispatchData();
+        Object.keys(this.filmForm.controls).forEach(key => {
+          this.filmForm.get(key)?.disable();
+        });
+      } else {
+        this.error = true;
+        return;
+      }
+
     }
     this.disabled = !this.disabled;
   }
@@ -143,6 +151,5 @@ export class EditFilmComponent implements OnInit {
     this.filmForm.patchValue({score: this.filmMapped.imdbRating});
     this.filmForm.patchValue({length: this.filmMapped.duration});
   }
-
 
 }
