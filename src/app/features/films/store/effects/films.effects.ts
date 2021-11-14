@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { EMPTY } from 'rxjs';
-import { map, catchError, switchMap } from 'rxjs/operators';
+import { catchError, switchMap, mergeMap } from 'rxjs/operators';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
@@ -8,10 +8,6 @@ import { FilmsService } from '../../services/films.service';
 import * as actions from '../actions/films.actions';
 import * as actorsActions from '@features/actors/store/actions/actors.actions';
 import * as companiesActions from '@features/companies/store/actions/companies.actions';
-import { SpinnerService } from '@shared/services/spinner.service';
-import { AppState } from '@core/app.reducer';
-import { Store } from '@ngrx/store';
-
 
 
  
@@ -23,11 +19,11 @@ export class FilmsEffects {
       ofType(actions.fetchFilms),
       switchMap(() => this.filmsService.getFilms()
       .pipe(
-        map(films => {
-          this.store.dispatch(actorsActions.fetchActors());
-          this.store.dispatch(companiesActions.fetchCompanies());
-          return actions.setFilms({films}) 
-        }),
+        mergeMap(films => [
+          actorsActions.fetchActors(),
+          companiesActions.fetchCompanies(),
+          actions.setFilms({films})
+        ]),
         catchError(() => EMPTY)
       ))
     ) 
@@ -36,11 +32,5 @@ export class FilmsEffects {
   constructor(
     private actions$: Actions,
     private filmsService: FilmsService,
-    private spinnerService: SpinnerService,
-    private store: Store<AppState>,
-  ) {
-    
-  }
-  
- 
+  ) {}
 }
