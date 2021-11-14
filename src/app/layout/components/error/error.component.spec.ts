@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { LayoutService } from '@shared/services/layout.service';
 
 import { ErrorComponent } from './error.component';
 
@@ -8,7 +11,12 @@ describe('ErrorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorComponent ]
+      imports: [ 
+        RouterTestingModule,
+        TranslateModule.forRoot()
+      ],
+      declarations: [ ErrorComponent ],
+      providers: [ LayoutService ]
     })
     .compileComponents();
   });

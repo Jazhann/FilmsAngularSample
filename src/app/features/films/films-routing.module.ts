@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '', component: FilmsComponent,
   },
   {
-    path: 'edit/:id', component: EditFilmComponent,
+    path: 'edit', component: EditFilmComponent,
   },
   {
     path: 'create', component: CreateFilmComponent,
