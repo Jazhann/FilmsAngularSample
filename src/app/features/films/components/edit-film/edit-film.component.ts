@@ -133,7 +133,7 @@ export class EditFilmComponent implements OnInit {
       title: this.filmMapped.title,
       poster: this.filmMapped.poster,
       year: this.filmMapped.year,
-      duration: this.filmForm.value.lenght,
+      duration: this.filmForm.value.length,
       imdbRating: this.filmForm.value.score,
       actors: this.filmMapped.actors.map(actor => actor.id),
       genre: this.filmMapped.genre,

@@ -26,6 +26,6 @@ export class LayoutService {
   }
 
   showMenuButton() {
-    return this.router.url.search(Constants.ROUTE_ERROR);
+    return this.router.url.search(Constants.ROUTE_ERROR) >= 0;
   }
 }

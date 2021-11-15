@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs';
 
 import { MatSidenav } from '@angular/material/sidenav';
 
-import { LayoutService } from '@shared/services/layout.service';
 import { SpinnerService } from '@shared/services/spinner.service';
 
 import { Constants } from '@shared/constants';
@@ -25,11 +24,9 @@ export class LayoutComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
   constructor(
-    private layoutService: LayoutService,
     private spinnerService: SpinnerService,
     private store: Store<AppState>,
   ) { 
-    this.layoutService.setTitle('Home');
     this.subscription = this.spinnerService.status().subscribe( status => this.spinnerStatus = status);
     this.spinnerService.show();
     this.store.dispatch(actions.fetchFilms());

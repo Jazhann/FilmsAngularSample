@@ -4,6 +4,7 @@ import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { FilmsService } from '@features/films/services/films.service';
 
 import { FilmCardComponent } from './film-card.component';
+import { MatCardModule } from '@angular/material/card';
 
 describe('FilmCardComponent', () => {
   let component: FilmCardComponent;
@@ -13,7 +14,10 @@ describe('FilmCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule ],
+      imports: [ 
+        HttpClientTestingModule,
+        MatCardModule
+       ],
       declarations: [ FilmCardComponent ],
       providers: [ 
         FilmsService,
@@ -43,4 +47,10 @@ describe('FilmCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should get image url', () => {
+    const mockUrl = 'http:/mock.image.url';
+    const imageUrl = component.getImage(mockUrl);
+    expect(imageUrl).toEqual(mockUrl);
+  })
 });

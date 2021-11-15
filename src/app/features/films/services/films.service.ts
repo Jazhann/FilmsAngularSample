@@ -24,7 +24,7 @@ export class FilmsService {
     return this.http.get<Film[]>(environment.apiUrl + Constants.ROUTE_API_FILMS);
   }
 
-  getImage(image: string) {
+  getImage(image: string | null | undefined) {
     return image != null ? image : Constants.ROUTE_IMAGE_NOT_FOUND;
   }
 
