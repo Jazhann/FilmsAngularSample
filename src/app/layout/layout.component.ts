@@ -19,7 +19,7 @@ import * as actions from '@features/films/store/actions/films.actions';
 export class LayoutComponent {
   CONST = Constants;
   spinnerStatus = false;
-  subscription!: Subscription;
+  subscription!: Subscription | undefined;
 
   @ViewChild('sidenav') sidenav!: MatSidenav;
 

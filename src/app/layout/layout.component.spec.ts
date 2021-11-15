@@ -1,3 +1,4 @@
+import { not } from '@angular/compiler/src/output/output_ast';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -61,7 +62,13 @@ describe('LayoutComponent', () => {
   it('should unsubscribe ', () => {
     spyOn(Subscription.prototype, 'unsubscribe');
     component.ngOnDestroy();
-    expect(Subscription.prototype.unsubscribe).toHaveBeenCalledTimes(1);
+    expect(Subscription.prototype.unsubscribe).toHaveBeenCalled();
   });
 
+  it('should not unsubscribe ', () => {
+    spyOn(Subscription.prototype, 'unsubscribe');
+    component.subscription = undefined;
+    component.ngOnDestroy();
+    expect(Subscription.prototype.unsubscribe).not.toHaveBeenCalled();
+  });
 });

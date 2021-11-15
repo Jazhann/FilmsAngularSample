@@ -14,6 +14,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('CreateFilmComponent', () => {
   let component: CreateFilmComponent;
@@ -29,18 +32,21 @@ describe('CreateFilmComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ 
         HttpClientTestingModule,
+        BrowserAnimationsModule,
         RouterTestingModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCardModule,
         TranslateModule.forRoot(),
       ],
       declarations: [ CreateFilmComponent ],
       providers: [ 
         LayoutService,
         FilmsService,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatIconModule,
-        MatButtonModule,
         provideMockStore({ initialState }),
        ]
     })

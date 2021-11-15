@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { LayoutService } from '@shared/services/layout.service';
@@ -13,6 +14,7 @@ describe('NotFoundComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ 
         RouterTestingModule,
+        MatToolbarModule,
         TranslateModule.forRoot()
       ],
       declarations: [ NotFoundComponent ],
