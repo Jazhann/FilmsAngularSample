@@ -1,6 +1,6 @@
 # FilmsAngularSample
 
-This project was generated with Angular version 13.0.1. This is a sample of films website. You need to download the repository and run `npm install`
+This project was generated with Angular version 13.0.1. This is films website sample. You need to download the repository and run `npm install`
 
 ## Mock api
 
